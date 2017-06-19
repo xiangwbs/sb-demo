@@ -1,7 +1,6 @@
 ### IntelliJ IDEA ###
 .idea
 .mvn
-.settings
 sbdemo/target
 sbdemo/*.iml
 mvnw
@@ -11,3 +10,4 @@ logs
 ### eclipse ###
 sbdemo/.project
 sbdemo/.classpath
+sbdemo/.settings
