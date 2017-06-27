@@ -1,6 +1,8 @@
 package com.xwbing.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xwbing.constant.CommonConstant;
+import com.xwbing.constant.CommonEnum;
 import com.xwbing.domain.SysConfig;
 import com.xwbing.domain.SysUser;
 import com.xwbing.domain.model.EmailModel;

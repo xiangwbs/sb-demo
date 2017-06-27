@@ -110,6 +110,5 @@ public class CaptchaUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 }

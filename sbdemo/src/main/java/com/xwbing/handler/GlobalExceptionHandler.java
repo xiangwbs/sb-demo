@@ -86,6 +86,6 @@ public class GlobalExceptionHandler {
     public JSONObject handlerException(HttpServletRequest request,
                                        Exception ex) {
         logger.error(ex.getMessage());
-        return JSONObjResult.toJSONObj("系统异常，请联系管理员 " + ex.getMessage());
+        return JSONObjResult.toJSONObj("系统异常，请联系管理员");
     }
 }
