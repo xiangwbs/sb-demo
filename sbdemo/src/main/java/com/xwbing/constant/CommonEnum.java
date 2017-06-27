@@ -1,5 +1,8 @@
 package com.xwbing.constant;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  * 说明: 公共枚举
  * 项目名称: zdemo
@@ -68,9 +71,14 @@ public class CommonEnum {
     }
 
     public static void main(String[] args) {
+        String code = "Y";
         for (YesOrNo yesOrNo : YesOrNo.values()) {
-            System.out.println(yesOrNo.getName());
-            System.out.println(yesOrNo.getCode());
+            if (yesOrNo.getCode().equals(code)) {
+                System.out.println(yesOrNo.getName());
+                break;
+            }
         }
+        YesOrNo yesOrNo = Arrays.stream(YesOrNo.values()).filter(obj -> obj.getCode().equals(code)).collect(Collectors.toList()).get(0);
+        System.out.println(yesOrNo.getName());
     }
 }
