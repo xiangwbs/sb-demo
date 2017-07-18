@@ -3,7 +3,6 @@ package com.xwbing.handler;
 import com.alibaba.fastjson.JSONObject;
 import com.xwbing.exception.BusinessException;
 import com.xwbing.util.JSONObjResult;
-import com.xwbing.util.RestMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -44,9 +43,7 @@ public class GlobalExceptionHandler {
     public JSONObject handlerGuideException(HttpServletRequest request,
                                             Exception ex) {
         logger.error(ex.getMessage());
-        RestMessage result = new RestMessage();
-        result.setMsg(ex.getMessage());
-        return JSONObjResult.toJSONObj(result);
+        return JSONObjResult.toJSONObj(ex.getMessage());
     }
 
     /**
@@ -61,8 +58,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public JSONObject handlerBindException(HttpServletRequest request,
                                            HttpServletResponse response, BindException ex) {
-        logger.error(ex.getMessage());
-        RestMessage result = new RestMessage();
+
         List<ObjectError> list = ex.getAllErrors();
         StringBuffer stringBuffer = new StringBuffer();
         for (ObjectError objectError : list) {
@@ -70,9 +66,9 @@ public class GlobalExceptionHandler {
                 stringBuffer.append(" && ");
             stringBuffer.append(objectError.getDefaultMessage());
         }
-        result.setMsg(stringBuffer.toString());
+        logger.error(stringBuffer.toString());
         response.setStatus(HttpStatus.OK.value());
-        return JSONObjResult.toJSONObj(result);
+        return JSONObjResult.toJSONObj(stringBuffer.toString());
     }
 
     /**
