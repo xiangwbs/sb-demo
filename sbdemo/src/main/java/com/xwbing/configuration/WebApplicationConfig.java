@@ -5,7 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -34,6 +36,31 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
         super.addInterceptors(registry);
     }
 
+    /**
+     * 线程池
+     * @return
+     */
+    @Bean
+    public static ThreadPoolTaskExecutor getPoolTaskExecutor() {
+        ThreadPoolTaskExecutor poolTaskExecutor = new ThreadPoolTaskExecutor();
+        poolTaskExecutor.setCorePoolSize(5);
+        poolTaskExecutor.setKeepAliveSeconds(30000);
+        poolTaskExecutor.setMaxPoolSize(1000);
+        poolTaskExecutor.setQueueCapacity(200);
+        return poolTaskExecutor;
+    }
+
+    /**
+     *文件上传解析器
+     * @return
+     */
+    @Bean
+    public CommonsMultipartResolver getCommonsMultipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(104857600);
+        multipartResolver.setDefaultEncoding("UTF-8");
+        return multipartResolver;
+    }
     /**
      * encoding编码问题
      *
