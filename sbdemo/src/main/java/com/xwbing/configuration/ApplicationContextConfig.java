@@ -12,7 +12,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  */
 @Configuration
 //@Import(xxx.class)//用来导入其他配置类
-//@ImportResource("classpath:applicationContext.xml")//用来加载xml配置文件
+//@ImportResource("classpath:applicationContext.xml")//用来加载其他xml配置文件
 public class ApplicationContextConfig {
     /**
      * 线程池

@@ -19,7 +19,7 @@ import javax.servlet.Filter;
  * 创建时间: 2017/5/10 16:36
  * 作者:  xiangwb
  */
-@Configuration
+@Configuration//相当于XML中的<beans></beans>
 public class WebApplicationConfig extends WebMvcConfigurerAdapter {
     private static final Logger logger = LoggerFactory.getLogger(WebApplicationConfig.class);
 
@@ -40,7 +40,7 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
      * 线程池
      * @return
      */
-    @Bean
+    @Bean(name = "taskExecutor")//相当于XML中的<bean></bean>
     public static ThreadPoolTaskExecutor getPoolTaskExecutor() {
         ThreadPoolTaskExecutor poolTaskExecutor = new ThreadPoolTaskExecutor();
         poolTaskExecutor.setCorePoolSize(5);
