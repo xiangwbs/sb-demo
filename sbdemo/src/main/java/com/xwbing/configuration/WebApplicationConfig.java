@@ -61,7 +61,7 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
     public HttpMessageConverter getFastJsonHttpMessageConverter() {
         FastJsonHttpMessageConverter httpMessageConverter = new FastJsonHttpMessageConverter();
         List<MediaType> mediaTypes = new ArrayList<>();
-        mediaTypes.add(MediaType.TEXT_HTML);
+        mediaTypes.add(MediaType.TEXT_HTML);//避免IE出现下载JSON文件的情况
         mediaTypes.add(MediaType.APPLICATION_JSON);
         mediaTypes.add(MediaType.APPLICATION_FORM_URLENCODED);
         mediaTypes.add(MediaType.APPLICATION_OCTET_STREAM);
