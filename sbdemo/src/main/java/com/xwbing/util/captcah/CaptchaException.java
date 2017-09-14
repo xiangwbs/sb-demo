@@ -3,7 +3,7 @@ package com.xwbing.util.captcah;
 /**
  * 说明:创建验证码异常类
  * 创建日期: 2016年8月29日 上午11:02:42
- * 作者: xwb
+ * 作者: xiangwb
  */
 public class CaptchaException extends RuntimeException {
 

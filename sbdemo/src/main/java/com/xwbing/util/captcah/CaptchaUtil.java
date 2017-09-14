@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * 说明:验证码工具类
  * 创建日期: 2016年8月29日 上午10:57:41
- * 作者: xwb
+ * 作者: xiangwb
  */
 public class CaptchaUtil {
 
