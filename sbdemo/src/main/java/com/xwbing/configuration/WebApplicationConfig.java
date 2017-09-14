@@ -1,10 +1,13 @@
 package com.xwbing.configuration;
 
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.xwbing.interceptor.LoginInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -12,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.servlet.Filter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 说明: 程序配置
@@ -37,7 +42,36 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
+     * 扩展消息转换器，增加fastjson
+     *
+     * @param converters
+     */
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(getFastJsonHttpMessageConverter());
+        super.configureMessageConverters(converters);
+    }
+
+    /**
+     * 请求处理程序映射适配器,使用fastJson
+     *
+     * @return
+     */
+    @Bean
+    public HttpMessageConverter getFastJsonHttpMessageConverter() {
+        FastJsonHttpMessageConverter httpMessageConverter = new FastJsonHttpMessageConverter();
+        List<MediaType> mediaTypes = new ArrayList<>();
+        mediaTypes.add(MediaType.TEXT_HTML);
+        mediaTypes.add(MediaType.APPLICATION_JSON);
+        mediaTypes.add(MediaType.APPLICATION_FORM_URLENCODED);
+        mediaTypes.add(MediaType.APPLICATION_OCTET_STREAM);
+        httpMessageConverter.setSupportedMediaTypes(mediaTypes);
+        return httpMessageConverter;
+    }
+
+    /**
      * 线程池
+     *
      * @return
      */
     @Bean(name = "taskExecutor")//相当于XML中的<bean></bean>
@@ -51,7 +85,8 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     *文件上传解析器
+     * 文件上传解析器
+     *
      * @return
      */
     @Bean
@@ -61,6 +96,7 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
         multipartResolver.setDefaultEncoding("UTF-8");
         return multipartResolver;
     }
+
     /**
      * encoding编码问题
      *
