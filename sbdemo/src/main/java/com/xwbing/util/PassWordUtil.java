@@ -36,7 +36,7 @@ public class PassWordUtil {
 		if (StringUtils.isEmpty(password))
 			password = RadomUtil.buildRandom(PWD_LENGTH);
 		// 密码盐值
-		byte[] salt = null;
+		byte[] salt;
 		// 密码盐值 如果是为空，那么随机获取；不为空，解析pwdSalt
 		if (StringUtils.isEmpty(pwdSalt)) {
 			salt = Digests.generateSalt(SALT_SIZE);
