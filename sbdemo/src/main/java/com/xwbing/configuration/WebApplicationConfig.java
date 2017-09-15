@@ -77,10 +77,10 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
     @Bean(name = "taskExecutor")//相当于XML中的<bean></bean>
     public static ThreadPoolTaskExecutor getPoolTaskExecutor() {
         ThreadPoolTaskExecutor poolTaskExecutor = new ThreadPoolTaskExecutor();
-        poolTaskExecutor.setCorePoolSize(5);
-        poolTaskExecutor.setKeepAliveSeconds(30000);
-        poolTaskExecutor.setMaxPoolSize(1000);
-        poolTaskExecutor.setQueueCapacity(200);
+        poolTaskExecutor.setCorePoolSize(5);//核心线程数
+        poolTaskExecutor.setMaxPoolSize(1000);//最大线程数
+        poolTaskExecutor.setKeepAliveSeconds(30000);//空闲线程的存活时间
+        poolTaskExecutor.setQueueCapacity(200);//队列最大长度
         return poolTaskExecutor;
     }
 
