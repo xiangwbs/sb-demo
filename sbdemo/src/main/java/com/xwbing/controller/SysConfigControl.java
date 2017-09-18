@@ -13,10 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Objects;
@@ -52,8 +49,8 @@ public class SysConfigControl {
 
     @ApiOperation(value = "删除", notes = "根据code删除系统配置信息")
     @ApiImplicitParam(name = "code", value = "配置项的code", paramType = "query", required = true, dataType = "string")
-    @PostMapping("removeByCode")
-    public JSONObject removeByCode(@RequestParam String code) {
+    @PostMapping("removeByCode/{code}")
+    public JSONObject removeByCode(@PathVariable String code) {
         String logMsg = "删除系统配置信息";
         log.info(logMsg + " code:{}", code);
         if (StringUtils.isEmpty(code)) {
