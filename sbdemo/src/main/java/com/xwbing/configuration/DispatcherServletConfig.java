@@ -5,10 +5,12 @@ import com.xwbing.interceptor.LoginInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -25,8 +27,9 @@ import java.util.List;
  * 作者:  xiangwb
  */
 @Configuration//相当于XML中的<beans></beans>
-public class WebApplicationConfig extends WebMvcConfigurerAdapter {
-    private static final Logger logger = LoggerFactory.getLogger(WebApplicationConfig.class);
+@ComponentScan(basePackages = {"com.xwbing.controller"}, includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class)})
+public class DispatcherServletConfig extends WebMvcConfigurerAdapter {
+    private static final Logger logger = LoggerFactory.getLogger(DispatcherServletConfig.class);
 
     /***
      * 添加拦截器
@@ -67,21 +70,6 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
         mediaTypes.add(MediaType.APPLICATION_OCTET_STREAM);
         httpMessageConverter.setSupportedMediaTypes(mediaTypes);
         return httpMessageConverter;
-    }
-
-    /**
-     * 线程池
-     *
-     * @return
-     */
-    @Bean(name = "taskExecutor")//相当于XML中的<bean></bean>
-    public static ThreadPoolTaskExecutor getPoolTaskExecutor() {
-        ThreadPoolTaskExecutor poolTaskExecutor = new ThreadPoolTaskExecutor();
-        poolTaskExecutor.setCorePoolSize(5);//核心线程数
-        poolTaskExecutor.setMaxPoolSize(1000);//最大线程数
-        poolTaskExecutor.setKeepAliveSeconds(30000);//空闲线程的存活时间
-        poolTaskExecutor.setQueueCapacity(200);//队列最大长度
-        return poolTaskExecutor;
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.xwbing.interceptor;
 
-import com.xwbing.configuration.WebApplicationConfig;
+import com.xwbing.configuration.DispatcherServletConfig;
 import com.xwbing.constant.CommonConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ import java.util.Objects;
  * 作者:  xiangwb
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-    private static final Logger logger = LoggerFactory.getLogger(WebApplicationConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(DispatcherServletConfig.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

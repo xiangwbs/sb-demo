@@ -1,8 +1,11 @@
 package com.xwbing.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 说明: 程序上下文配置
@@ -11,6 +14,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  * 作者:  xiangwb
  */
 @Configuration
+@ComponentScan(value = {"com.xwbing.*"}, excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class)})
 //@Import(xxx.class)//用来导入其他配置类
 //@ImportResource("classpath:applicationContext.xml")//用来加载其他xml配置文件
 public class ApplicationContextConfig {
@@ -19,13 +23,13 @@ public class ApplicationContextConfig {
      *
      * @return
      */
-    @Bean(name = "taskExecutor")
+    @Bean(name = "taskExecutor")//相当于XML中的<bean></bean>
     public static ThreadPoolTaskExecutor getPoolTaskExecutor() {
         ThreadPoolTaskExecutor poolTaskExecutor = new ThreadPoolTaskExecutor();
-        poolTaskExecutor.setCorePoolSize(5);
-        poolTaskExecutor.setKeepAliveSeconds(30000);
-        poolTaskExecutor.setMaxPoolSize(1000);
-        poolTaskExecutor.setQueueCapacity(200);
+        poolTaskExecutor.setCorePoolSize(5);//核心线程数
+        poolTaskExecutor.setMaxPoolSize(1000);//最大线程数
+        poolTaskExecutor.setKeepAliveSeconds(30000);//空闲线程的存活时间
+        poolTaskExecutor.setQueueCapacity(200);//队列最大长度
         return poolTaskExecutor;
     }
 }
