@@ -21,12 +21,22 @@ public class MailTestControl {
     @Autowired
     private MailService mailService;
 
+    /**
+     * 发送纯文本邮件
+     *
+     * @return
+     */
     @GetMapping("sendSimpleMail")
     public JSONObject sendSimpleMail() {
         RestMessage restMessage = mailService.sendSimpleMail("786461501@qq.com", "测试邮件", "收到一个纯文本邮件");
         return JSONObjResult.toJSONObj(restMessage);
     }
 
+    /**
+     * 发送html格式邮件
+     *
+     * @return
+     */
     @GetMapping("sendHtmlMail")
     public JSONObject sendHtmlMail() {
         String content = "<html>" +
@@ -38,6 +48,11 @@ public class MailTestControl {
         return JSONObjResult.toJSONObj(restMessage);
     }
 
+    /**
+     * 发送带附件邮件
+     *
+     * @return
+     */
     @GetMapping("sendAttachmentsMail")
     public JSONObject sendAttachmentsMail() {
         String path = "C:\\Users\\admin\\Desktop\\qq.txt";
@@ -45,6 +60,11 @@ public class MailTestControl {
         return JSONObjResult.toJSONObj(restMessage);
     }
 
+    /**
+     * 发送文本内嵌图片邮件
+     *
+     * @return
+     */
     @GetMapping("sendInlineResourceMail")
     public JSONObject sendInlineResourceMail() {
         String rscId = "pic";
