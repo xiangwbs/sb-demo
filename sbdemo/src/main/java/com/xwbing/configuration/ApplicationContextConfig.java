@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 创建时间: 2017/5/10 16:36
  * 作者:  xiangwb
  */
-@Configuration
+@Configuration//相当于.xml文件中的<beans></beans>
 @ComponentScan(value = {"com.xwbing.*"}, excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class)})
 //@Import(xxx.class)//用来导入其他配置类
 //@ImportResource("classpath:applicationContext.xml")//用来加载其他xml配置文件

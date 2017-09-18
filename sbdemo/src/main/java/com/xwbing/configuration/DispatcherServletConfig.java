@@ -26,7 +26,7 @@ import java.util.List;
  * 创建时间: 2017/5/10 16:36
  * 作者:  xiangwb
  */
-@Configuration//相当于XML中的<beans></beans>
+@Configuration
 @ComponentScan(basePackages = {"com.xwbing.controller"}, includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class)})
 public class DispatcherServletConfig extends WebMvcConfigurerAdapter {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServletConfig.class);
