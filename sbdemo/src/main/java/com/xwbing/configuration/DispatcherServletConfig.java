@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -72,18 +71,18 @@ public class DispatcherServletConfig extends WebMvcConfigurerAdapter {
         return httpMessageConverter;
     }
 
-    /**
-     * 文件上传解析器
-     *
-     * @return
-     */
-    @Bean
-    public CommonsMultipartResolver getCommonsMultipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(104857600);
-        multipartResolver.setDefaultEncoding("UTF-8");
-        return multipartResolver;
-    }
+//    /**
+//     * 文件上传解析器
+//     *
+//     * @return
+//     */
+//    @Bean
+//    public CommonsMultipartResolver getCommonsMultipartResolver() {
+//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+//        multipartResolver.setMaxUploadSize(104857600);
+//        multipartResolver.setDefaultEncoding("UTF-8");
+//        return multipartResolver;
+//    }
 
     /**
      * encoding编码问题

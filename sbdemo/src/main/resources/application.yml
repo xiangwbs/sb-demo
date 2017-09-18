@@ -30,6 +30,19 @@ spring:
   aop:
     auto: true # Add @EnableAspectJAutoProxy
     proxy-target-class: false
+  #mail
+  mail:
+    host: smtp.163.com
+    username: xiangwbs@163.com
+    password: xwbing900511 #邮箱设置里获取的授权码
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          auth: true #授权
+          starttls:
+            enable: true
+            required: true
 
 #redis
 redis:
