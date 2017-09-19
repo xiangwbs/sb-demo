@@ -26,7 +26,8 @@ public class TestControl {
     @GetMapping("redis")
     public void redis() {
         redisService.set("redis", "xwbing");
-        logger.info("获取的数据为:" + redisService.get("redis"));
+        String s = redisService.get("redis");
+        logger.info("获取的数据为:" + s);
     }
     @LogInfo("log")
     @GetMapping("log")

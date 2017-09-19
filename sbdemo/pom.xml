@@ -42,6 +42,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <fileUpLoad.version>1.3.1</fileUpLoad.version>
         <lombok.version>1.16.16</lombok.version>
         <!-- 打包跳过单元测试 -->
         <skipTests>true</skipTests>
@@ -82,10 +83,10 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <!-- RabbitMQ -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-amqp</artifactId>-->
+        <!--</dependency>-->
         <!--热部署 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -102,11 +103,11 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger2.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.xwbing</groupId>
-            <artifactId>cloud-document-ui</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.xwbing</groupId>-->
+        <!--<artifactId>cloud-document-ui</artifactId>-->
+        <!--<version>1.0.0</version>-->
+        <!--</dependency>-->
         <!--json  -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -150,11 +151,17 @@
             <artifactId>jedis</artifactId>
             <version>2.7.3</version>
         </dependency>
-        <!-- 实体类自动生成getting和setting方法,以及equals,hashCode,toString等-->
+        <!-- lombok:实体类自动生成getting和setting方法,以及equals,hashCode,toString等-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <!-- fileupload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${fileUpLoad.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -173,6 +180,16 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- war包命名为ROOT.war -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <warName>ROOT</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>

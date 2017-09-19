@@ -63,8 +63,7 @@ public class MailService {
             helper.setFrom(from);
             helper.setTo(to);
             helper.setSubject(subject);
-            //启用html
-            helper.setText(content, true);
+            helper.setText(content, true);//启用html
             mailSender.send(message);
             restMessage.setSuccess(true);
             restMessage.setMsg("html邮件已经发送!");
