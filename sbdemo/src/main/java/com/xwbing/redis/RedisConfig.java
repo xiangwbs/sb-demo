@@ -46,6 +46,4 @@ public class RedisConfig {
         logger.info("init JedisPool ...............");
         return pool;
     }
-
-
 }

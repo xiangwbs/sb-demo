@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 创建日期: ${date} ${time} <br/>
  * 作者: wdz
  */
-
 public interface SysConfigRepository extends JpaRepository<SysConfig,String> {
     SysConfig findByCode(String code);
 }

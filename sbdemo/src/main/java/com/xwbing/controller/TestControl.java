@@ -27,6 +27,7 @@ public class TestControl {
     public void redis() {
         redisService.set("redis", "xwbing");
         String s = redisService.get("redis");
+        System.out.println(s);
         logger.info("获取的数据为:" + s);
     }
     @LogInfo("log")
