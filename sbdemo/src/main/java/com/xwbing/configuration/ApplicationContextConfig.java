@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * 说明: 程序上下文配置
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 作者:  xiangwb
  */
 @Configuration//相当于.xml文件中的<beans></beans>
-@ComponentScan(value = {"com.xwbing.*"}, excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class)})
+@ComponentScan(value = {"com.xwbing"}, excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 //@Import(xxx.class)//用来导入其他配置类
 //@ImportResource("classpath:applicationContext.xml")//用来加载其他xml配置文件
 public class ApplicationContextConfig {

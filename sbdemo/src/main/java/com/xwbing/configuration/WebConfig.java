@@ -12,17 +12,17 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 @Order(1)
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
-    protected String[] getServletMappings() {
-        return new String[]{"/*"};
+    protected String[] getServletMappings() { //DispatcherServlet映射,从"/"开始
+        return new String[]{"/"};
     }
 
     @Override
-    protected Class<?>[] getRootConfigClasses() {
+    protected Class<?>[] getRootConfigClasses() {//根容器
         return new Class<?>[]{ApplicationContextConfig.class};
     }
 
     @Override
-    protected Class<?>[] getServletConfigClasses() {
+    protected Class<?>[] getServletConfigClasses() {//Spring mvc容器
         return new Class<?>[]{DispatcherServletConfig.class};
     }
 }
