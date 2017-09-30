@@ -151,6 +151,11 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${fileUpLoad.version}</version>
+        </dependency>
         <!-- redis-->
         <dependency>
             <groupId>redis.clients</groupId>
@@ -162,12 +167,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <!-- fileupload -->
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${fileUpLoad.version}</version>
         </dependency>
     </dependencies>
     <build>
