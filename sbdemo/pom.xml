@@ -189,6 +189,8 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <!-- true:跳过测试 -->
+                    <skip>${skipTests}</skip>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
