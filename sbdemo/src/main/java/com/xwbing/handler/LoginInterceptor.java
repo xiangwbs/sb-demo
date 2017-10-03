@@ -24,6 +24,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     static {
         set.add("/v2/api-docs");
         set.add("/servlet/captchaCode");
+        set.add("/swagger-ui.html");
     }
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
