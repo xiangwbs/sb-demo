@@ -1,4 +1,4 @@
-package com.xwbing.interceptor;
+package com.xwbing.handler;
 
 import com.xwbing.configuration.DispatcherServletConfig;
 import com.xwbing.constant.CommonConstant;
