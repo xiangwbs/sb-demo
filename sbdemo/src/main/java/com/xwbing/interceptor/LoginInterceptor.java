@@ -9,7 +9,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 说明:  登录拦截器
@@ -18,17 +19,25 @@ import java.util.Objects;
  * 作者:  xiangwb
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-    private static final Logger logger = LoggerFactory.getLogger(DispatcherServletConfig.class);
-
+    private final Logger logger = LoggerFactory.getLogger(DispatcherServletConfig.class);
+    private static final Set<String> set = new HashSet<>();//拦截器白名单
+    static {
+        set.add("/v2/api-docs");
+        set.add("/servlet/captchaCode");
+    }
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        boolean flag = true;
-        HttpSession session = request.getSession();
-        if (Objects.isNull(session.getAttribute(CommonConstant.SESSION_CURRENT_USER))) {
-//            flag=false;
-            // TODO: 2017/5/15
+        String servletPath = request.getServletPath();
+        if(!set.contains(servletPath) && !servletPath.contains("login")){
+            HttpSession session = request.getSession();
+            if (session.getAttribute(CommonConstant.SESSION_CURRENT_USER)!=null) {
+                // TODO: 2017/5/15
+                return true;
+            }else {
+                // TODO: 2017/10/3
+                return false;
+            }
         }
-        return flag;
+        return true;
     }
-
 }
