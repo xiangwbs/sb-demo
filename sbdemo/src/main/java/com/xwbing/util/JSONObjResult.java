@@ -47,12 +47,6 @@ public class JSONObjResult {
         return JSON.parseObject(JSON.toJSONString(jsonObjResult, SerializerFeature.WriteMapNullValue));
     }
 
-    /**
-     * 设置错误信息 （默认success是false）
-     *
-     * @param error
-     * @return
-     */
     public static JSONObject toJSONObj(String error) {
         JSONObjResult jsonObjResult = new JSONObjResult();
         jsonObjResult.setSuccess(false);
