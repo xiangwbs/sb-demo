@@ -7,9 +7,6 @@ server:
 
 #spring
 spring:
-  # 多环境配置文件激活属性
-  profiles:
-    active:
   #datasource
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

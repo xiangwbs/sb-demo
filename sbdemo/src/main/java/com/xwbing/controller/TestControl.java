@@ -30,6 +30,7 @@ public class TestControl {
         System.out.println(s);
         logger.info("获取的数据为:" + s);
     }
+
     @LogInfo("log")
     @GetMapping("log")
     public void log() {

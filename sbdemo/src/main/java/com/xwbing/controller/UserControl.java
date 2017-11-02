@@ -9,10 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -55,7 +52,7 @@ public class UserControl {
         return JSONObjResult.toJSONObj(result);
     }
 
-    @PostMapping("findById")
+    @GetMapping("findById")
     public JSONObject findById(String id) {
         if (StringUtils.isEmpty(id)) {
             return JSONObjResult.toJSONObj("主键不能为空");
@@ -67,7 +64,7 @@ public class UserControl {
         return JSONObjResult.toJSONObj(sysUser, true, "");
     }
 
-    @PostMapping("findList")
+    @GetMapping("findList")
     public JSONObject findList() {
         List<SysUser> list = userService.findList();
         return JSONObjResult.toJSONObj(list, true, "");
