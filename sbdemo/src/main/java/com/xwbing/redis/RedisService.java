@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Component
-@PropertySource("classpath:config.properties")
+@PropertySource("classpath:config.properties")//读取properties文件
 public class RedisService {
     @Autowired
     private JedisPool jedisPool;
