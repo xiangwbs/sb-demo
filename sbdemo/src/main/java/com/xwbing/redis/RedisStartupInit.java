@@ -18,7 +18,7 @@ import java.util.Set;
  * 作者:  xiangwb
  */
 @Component
-@PropertySource("classpath:config.properties")
+@PropertySource("classpath:config.properties")//只加载properties文件
 public class RedisStartupInit implements InitializingBean {
     private final Logger logger = LoggerFactory.getLogger(RedisStartupInit.class);
     @Autowired
