@@ -2,7 +2,6 @@ package com.xwbing.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xwbing.constant.CommonConstant;
-import com.xwbing.constant.CommonEnum;
 import com.xwbing.domain.SysConfig;
 import com.xwbing.domain.SysUser;
 import com.xwbing.domain.model.EmailModel;
@@ -44,8 +43,6 @@ public class UserService {
         }
         sysUser.setId(PassWordUtil.createId());
         sysUser.setCreateTime(new Date());
-        // 设置否管理员
-        sysUser.setIsAdmin(CommonEnum.YesOrNo.NO.getCode());
         // 获取初始密码
         String[] res = PassWordUtil.getUserSecret(null, null);
         sysUser.setSalt(res[1]);
@@ -85,9 +82,6 @@ public class UserService {
         SysUser old=findOne(id);
         if(Objects.isNull(old)){
             throw new BusinessException("该对象不存在");
-        }
-        if (CommonEnum.YesOrNo.YES.getCode().equalsIgnoreCase(old.getIsAdmin())) {
-            throw new BusinessException("不能对管理员进行删除操作");
         }
         userRepository.delete(id);
         result.setSuccess(true);
@@ -160,7 +154,7 @@ public class UserService {
         // 根据密码盐值， 解码
         byte[] salt = EncodeUtils.hexDecode(sysUser.getSalt());
         byte[] hashPassword = Digests.sha1(oldPassWord.getBytes(), salt,
-                SysUser.HASH_INTERATIONS);
+                PassWordUtil.HASH_INTERATIONS);
         // 密码 数据库中密码
         String validatePassWord = EncodeUtils.hexEncode(hashPassword);
         if (!Objects.equals(validatePassWord,sysUser.getPassword())) {// 如果不相等

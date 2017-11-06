@@ -9,7 +9,6 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Pattern;
-import java.util.Date;
 
 /**
  * 说明: 用户
@@ -23,18 +22,6 @@ import java.util.Date;
 public class SysUser extends BaseEntity {
     private static final long serialVersionUID = -2447528751353457021L;
     public static String table = "sys_user_info";
-    /**
-     * 密码盐长度
-     */
-    public static final int SALT_SIZE = 10;
-    /**
-     * 初始默认密码长度
-     */
-    public static final int PWD_LENGTH = 8;
-    /**
-     * hash
-     */
-    public static int HASH_INTERATIONS = 1024;
     /**
      * 用户名
      */
@@ -55,16 +42,6 @@ public class SysUser extends BaseEntity {
      */
     private String password;
     /**
-     * 最后登录IP
-     */
-    @Column(name = "last_login_ip")
-    private String lastLoginIp;
-    /**
-     * 最后登录时间
-     */
-    @Column(name = "last_login_time")
-    private Date lastLoginTime;
-    /**
      * 邮箱
      */
     @Email
@@ -75,9 +52,4 @@ public class SysUser extends BaseEntity {
     @NotBlank
     @Pattern(regexp = "[01]", message = "性别格式为0|1,0代表女,1代表男")
     private String sex;
-    /**
-     * 是否管理员
-     */
-    @Column(name = "is_admin")
-    private String isAdmin;
 }

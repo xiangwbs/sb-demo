@@ -1,7 +1,6 @@
 package com.xwbing.constant;
 
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 /**
  * 说明: 公共枚举
@@ -78,7 +77,7 @@ public class CommonEnum {
                 break;
             }
         }
-        YesOrNo yesOrNo = Arrays.stream(YesOrNo.values()).filter(obj -> obj.getCode().equals(code)).collect(Collectors.toList()).get(0);
-        System.out.println(yesOrNo.getName());
+        YesOrNo yesOrNoEnum = Arrays.stream(YesOrNo.values()).filter(obj -> obj.getCode().equals(code)).findFirst().get();
+        System.out.println(yesOrNoEnum.getName());
     }
 }

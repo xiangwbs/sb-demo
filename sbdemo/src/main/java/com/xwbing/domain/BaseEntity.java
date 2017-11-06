@@ -27,7 +27,4 @@ public class BaseEntity implements Serializable {
     private Date createTime;
     @Column(name = "modified_time")
     private Date modifiedTime;
-    @Column(name = "is_deleted")
-    private String isDeleted;
-    private Integer sort;
 }
