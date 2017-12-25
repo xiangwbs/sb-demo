@@ -12,7 +12,6 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -27,7 +26,6 @@ import java.util.List;
  * 作者:  xiangwb
  */
 @Configuration
-@EnableWebMvc
 @ComponentScan(basePackages = {"com.xwbing.controller"}, includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class)})
 public class DispatcherServletConfig extends WebMvcConfigurerAdapter {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServletConfig.class);

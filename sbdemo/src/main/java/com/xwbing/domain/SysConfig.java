@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Pattern;
 
@@ -37,8 +36,7 @@ public class SysConfig extends BaseEntity {
      */
     @NotBlank(message = "是否启用不能为空")
     @Pattern(regexp = "Y|N",message = "是否启用格式为Y|N")
-    @Column(name = "is_enable")
-    private String isEnable;
+    private String enable;
     /**
      * 配置项的描述（名称）
      */
